@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>csr | Junior Developer</title>
+  <link rel="icon" href="../profile/index.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: white;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      background: black;
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1.15rem;
+    }
+
+    .logo img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid white;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.85;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-input {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      width: 180px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .search-btn {
+      background: white;
+      color: #00bfff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+
+    .search-btn:hover {
+      background: #f0f0f0;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+
+    .hero-content {
+      flex: 1;
+      max-width: 560px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 span {
+      color: gray;
+    }
+
+    .hero .role {
+      color: #6b7280;
+      font-size: 1.15rem;
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      color: #374151;
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 2px solid #0066ff;
+      border-radius: 50px;
+      color: #0066ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.25s;
+    }
+
+    .btn-primary:hover {
+      background: gray;
+      color: white;
+    }
+
+    .hero-image {
+      flex-shrink: 0;
+    }
+
+    .hero-image img {
+      width: 280px;
+      height: 300px;
+      border-radius: 10%;
+      object-fit: cover;
+      border: 6px ;
+      box-shadow: 0 10px 30px black;
+    }
+
+    /* ========== ABOUT ========== */
+    .about-section {
+      background: white;
+      padding: 60px 40px 80px;
+    }
+
+    .about-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background:rgb(61, 0, 0) ;
+      border-radius: 24px;
+      padding: 50px 50px;
+      display: flex;
+      gap: 50px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    .about-left {
+      flex: 1;
+      color: white;
+    }
+
+    .about-left .label {
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      opacity: 0.9;
+      margin-bottom: 12px;
+    }
+
+    .about-left h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    .about-left h2 span {
+      color: #7c4dff;
+    }
+
+    .about-left p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      opacity: 0.95;
+      max-width: 480px;
+    }
+
+    .quick-facts {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 32px;
+      width: 320px;
+      flex-shrink: 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .quick-facts h3 {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .fact-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.95rem;
+    }
+
+    .fact-row:last-child {
+      border-bottom: none;
+    }
+
+    .fact-row .label {
+      color: #6b7280;
+    }
+
+    .fact-row .value {
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 50px 40px 40px;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      max-width: 260px;
+    }
+
+    .footer-links h4,
+    .footer-social h4 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 14px;
+    }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00bfff;
+      font-size: 1.15rem;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-3px);
+      background: #f0f9ff;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 50px 24px 70px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-image img {
+        width: 220px;
+        height: 220px;
+      }
+
+      .about-container {
+        flex-direction: column;
+        padding: 40px 28px;
+      }
+
+      .quick-facts {
+        width: 100%;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .navbar {
+        padding: 12px 20px;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .nav-links {
+        display: none; /* simple mobile: hide links or use hamburger later */
+      }
+
+      .search-input {
+        width: 140px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .about-left h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="#" class="logo">
+        <!-- Replace src with your actual photo -->
+        <img src="../profile/index.jpg" alt="Chhoeun Sun Hour" />
+        Chhoeun Sun Hour
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#about"><i class="fas fa-id-card"></i> About Me</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact <i class="fas fa-chevron-down" style="font-size:0.7rem"></i></a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <input type="text" class="search-input" placeholder="Search" />
+      <button class="search-btn " style="color: #1a1a1a;"><i class="fas fa-search" style="color: #1a1a1a;"></i> Search</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Hello, I'm <span style="color: rgb(61, 0, 0);">Sun Hour</span></h1>
+      <p class="role" style="color: white;">Junior Developer</p>
+      <p>
+        Learn to learn. IT moves fast. The skill that matters most isn't knowing every language — it's being comfortable picking up new ones quickly. Get good at reading documentation, debugging by yourself, and using resources like Stack Overflow or AI tools wisely (understand what they give you, don't just copy-paste).
+      </p>
+      <a href="#about" class="btn-primary " style="color: #1a1a1a;border-color: #1a1a1a;">More About Me <i class="fas fa-chevron-right"></i></a>
+    </div>
+    <div class="hero-image">
+      <!-- Replace with your real photo -->
+      <img src="../profile/index1.jpg" alt=" profile" />
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about-container">
+      <div class="about-left">
+        <div class="label">ABOUT ME</div>
+        <h2>Building things for the <span style="color: brown;">Junior Developer</span> in me</h2>
+        <p>
+          Hello, my name is Sun hour. I'm studying Management Information of Technology , currently in my first year, and passionate about frontend and backend development.
+        </p>
+      </div>
+
+      <div class="quick-facts">
+        <h3>Quick Facts</h3>
+        <div class="fact-row">
+          <span class="label">Name:</span>
+          <span class="value">Chhoeun Sun Hour</span>
+        </div>
+        <div class="fact-row">
+          <span class="label">Role:</span>
+          <span class="value" >Junior Developer</span>
+        </div>
+        <div class="fact-row">
+          <span class="label">Phone:</span>
+          <span class="value">068268246</span>
+        </div>
+        <div class="fact-row">
+          <span class="label">Email:</span>
+          <span class="value">Chhoeunhourhour@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>Sun hour</h3>
+        <p>Junior Developer studying Information Technology.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h4>Follow Me</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/18EjMT5eED/?mibextid=wwXIfr" title="Facebook" style="color: #1a1a1a;"><i class="fab fa-facebook-f"></i></a><br>
+          <a href="https://www.instagram.com/benzersam?igsh=MXFqYW1rejgxZ3Nicg%3D%3D&utm_source=qr" title="Instagram" style="color: #1a1a1a;"><i class="fab fa-instagram"></i></a><br>
+          <a href="https://www.tiktok.com/@benzerhour?_r=1&_t=ZS-9AK6h1jACFZ" title="TikTok" style="color: #1a1a1a;"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
